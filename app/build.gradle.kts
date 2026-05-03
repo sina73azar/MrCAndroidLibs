@@ -67,8 +67,7 @@ dependencies {
     /**
      * Koin
      * */
-    val koin_version = "4.2"
-    implementation("io.insert-koin:koin-android:${koin_version}")
+    implementation(libs.koin.android)
     /**
      * Network
      * */
