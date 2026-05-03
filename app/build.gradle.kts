@@ -71,10 +71,14 @@ dependencies {
     /**
      * Network
      * */
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.serialization)
 
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
     /**
      * Serialization & Convertor
      * */
-
+    implementation(libs.kotlinx.serialization.json)
 
 }
