@@ -67,7 +67,7 @@ dependencies {
     /**
      * Koin
      * */
-    implementation(libs.koin.android)
+//    implementation(libs.koin.android)
     /**
      * Network
      * */
@@ -81,4 +81,8 @@ dependencies {
      * */
     implementation(libs.kotlinx.serialization.json)
 
+    /**
+     *
+     * */
+    implementation(libs.kotlinx.coroutines.android)
 }
