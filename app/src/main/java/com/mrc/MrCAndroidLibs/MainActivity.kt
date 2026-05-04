@@ -114,7 +114,7 @@ fun PostItem(post: Post) {
                 text = post.title, style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = "ID: ${post.id}", style = MaterialTheme.typography.bodySmall
+                text = "ID: ${post.userId}", style = MaterialTheme.typography.bodySmall
             )
         }
     }

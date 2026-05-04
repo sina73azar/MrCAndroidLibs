@@ -21,7 +21,7 @@ import retrofit2.Retrofit
 @InstallIn(value = [ActivityRetainedComponent::class])
 object AppModule {
 
-    const val BASE_URL = "https://jsonplaceholder.typicode.com"
+    const val BASE_URL = "http://jsonplaceholder.typicode.com/"
 
     @Provides
     fun buildOkhttp(): OkHttpClient {

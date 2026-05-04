@@ -8,6 +8,6 @@ import retrofit2.http.GET
  */
 interface ApiService {
 
-    @GET("/posts")
+    @GET("http://jsonplaceholder.typicode.com/posts")
     suspend fun getPosts(): Response<List<Post>>
 }
