@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -66,8 +68,20 @@ dependencies {
 
     /**
      * Koin
+     * we better get it once and cache it because repo is unaccessible with this internet
      * */
-//    implementation(libs.koin.android)
+    val koin_version = "4.2"
+/*    implementation(platform("io.insert-koin:koin-bom:$koin_version"))
+    implementation("io.insert-koin:koin-android")
+    implementation("io.insert-koin:koin-compose")
+    implementation("io.insert-koin:koin-compose-viewmodel")*/
+
+    /**
+     * Hilt
+     * */
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+
     /**
      * Network
      * */
