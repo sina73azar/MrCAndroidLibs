@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
@@ -7,17 +7,14 @@ plugins {
 }
 
 android {
-    namespace = "com.mrc.MrCAndroidLibs"
+    namespace = "com.mrc.compose_logger"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.mrc.MrCAndroidLibs"
         minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -36,12 +33,13 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -51,31 +49,6 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
-
-    /**
-     * Test
-     * */
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    /**
-     * Debug
-     * */
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
-
-    /**
-     * Koin
-     * we better get it once and cache it because repo is unaccessible with this internet
-     * */
-    /**     val koin_version = "4.2"
-    implementation(platform("io.insert-koin:koin-bom:$koin_version"))
-    implementation("io.insert-koin:koin-android")
-    implementation("io.insert-koin:koin-compose")
-    implementation("io.insert-koin:koin-compose-viewmodel")
-     */
 
     /**
      * Hilt
@@ -101,5 +74,8 @@ dependencies {
      * */
     implementation(libs.kotlinx.coroutines.android)
 
-    implementation(project(":compose-logger"))
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

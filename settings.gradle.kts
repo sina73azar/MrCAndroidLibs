@@ -62,4 +62,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "MrCAndroidLibs"
 include(":app")
- 
+include(":compose-logger")
