@@ -70,11 +70,12 @@ dependencies {
      * Koin
      * we better get it once and cache it because repo is unaccessible with this internet
      * */
-    val koin_version = "4.2"
-/*    implementation(platform("io.insert-koin:koin-bom:$koin_version"))
+    /**     val koin_version = "4.2"
+    implementation(platform("io.insert-koin:koin-bom:$koin_version"))
     implementation("io.insert-koin:koin-android")
     implementation("io.insert-koin:koin-compose")
-    implementation("io.insert-koin:koin-compose-viewmodel")*/
+    implementation("io.insert-koin:koin-compose-viewmodel")
+     */
 
     /**
      * Hilt
