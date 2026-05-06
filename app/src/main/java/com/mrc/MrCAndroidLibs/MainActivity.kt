@@ -28,7 +28,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mrc.MrCAndroidLibs.data.Post
 import com.mrc.MrCAndroidLibs.data.ResolvedResult
 import com.mrc.MrCAndroidLibs.ui.theme.MrCAndroidLibsTheme
-import com.mrc.compose_logger.TestOnly
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -75,7 +74,7 @@ fun PostsScreen(
         }
 
         is ResolvedResult.Success -> {
-            PostsList(posts = result.data)
+            PostsList(posts = result.data.posts)
         }
 
         is ResolvedResult.Error -> {
@@ -115,7 +114,7 @@ fun PostItem(post: Post) {
                 text = post.title, style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = "ID: ${post.userId}", style = MaterialTheme.typography.bodySmall
+                text = "ID: ${post.id}", style = MaterialTheme.typography.bodySmall
             )
         }
     }

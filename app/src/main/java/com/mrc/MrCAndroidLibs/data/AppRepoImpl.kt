@@ -9,7 +9,7 @@ import javax.inject.Inject
 class AppRepoImpl @Inject constructor(
     val apiService: ApiService
 ) : AppRepo {
-    override suspend fun getPosts(): ResolvedResult<List<Post>> {
+    override suspend fun getPosts(): ResolvedResult<PostsResponse> {
         return networkResolver {
             val res = apiService.getPosts()
             Log.d("okhttp", "getPosts: $res")

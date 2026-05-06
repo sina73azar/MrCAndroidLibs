@@ -21,8 +21,6 @@ import retrofit2.Retrofit
 @InstallIn(value = [ActivityRetainedComponent::class])
 object AppModule {
 
-    const val BASE_URL = "http://jsonplaceholder.typicode.com/"
-
     @Provides
     fun buildOkhttp(): OkHttpClient {
         return OkHttpClient
@@ -42,7 +40,7 @@ object AppModule {
 
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(BASE_URL)
+            .baseUrl("https://dummyjson.com/")
             .addConverterFactory(
                 json.asConverterFactory("application/json".toMediaType())
             )
