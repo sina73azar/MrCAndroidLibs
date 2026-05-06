@@ -1,5 +1,6 @@
 pluginManagement {
     repositories {
+        maven("https://maven.myket.ir")
         maven {
             url = uri("http://swd.daneshrefah.ir/artifactory/Android-virtual_maven-repo/")
             isAllowInsecureProtocol = true
@@ -8,7 +9,6 @@ pluginManagement {
                 password = "Dsa@1234"
             }
         }
-        maven("https://maven.myket.ir")
         google {
             content {
                 includeGroupByRegex("com\\.android.*")
