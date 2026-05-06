@@ -1,4 +1,4 @@
-package com.mrc.compose_logger
+package com.mrc.compose_logger.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
