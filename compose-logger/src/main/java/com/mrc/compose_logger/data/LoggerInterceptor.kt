@@ -14,10 +14,9 @@ import java.util.UUID
 import java.util.concurrent.TimeUnit
 import kotlin.concurrent.Volatile
 
-class LoggerInterceptor @JvmOverloads constructor(
-    private val loggerStore: LoggerStore?,
-) :
-    Interceptor {
+class LoggerInterceptor : Interceptor {
+
+
     enum class Level {
         /** No logs.  */
         NONE,
@@ -142,7 +141,7 @@ class LoggerInterceptor @JvmOverloads constructor(
             body = requestBodyString
         )
 
-        loggerStore?.add(
+        LoggerStore.add(
             NetworkLogEntry(
                 id = requestId,
                 request = requestModel
@@ -231,7 +230,7 @@ class LoggerInterceptor @JvmOverloads constructor(
             response = chain.proceed(request)
         } catch (e: Exception) {
             logger.log("<-- HTTP FAILED: " + e)
-            loggerStore?.updateError(requestId, e.toString())
+            LoggerStore.updateError(requestId, e.toString())
             throw e
         }
         val tookMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNs)
@@ -329,7 +328,7 @@ class LoggerInterceptor @JvmOverloads constructor(
             body = responseBodyString
         )
 
-        loggerStore?.updateResponse(
+        LoggerStore.updateResponse(
             id = requestId,
             response = responseModel,
             durationMs = tookMs

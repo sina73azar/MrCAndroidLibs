@@ -4,6 +4,7 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.mrc.MrCAndroidLibs.data.ApiService
 import com.mrc.MrCAndroidLibs.data.AppRepo
 import com.mrc.MrCAndroidLibs.data.AppRepoImpl
+import com.mrc.compose_logger.data.LoggerInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,6 +31,7 @@ object AppModule {
                     level = HttpLoggingInterceptor.Level.BODY
                 }
             )
+            .addNetworkInterceptor(LoggerInterceptor())
             .build()
     }
 
