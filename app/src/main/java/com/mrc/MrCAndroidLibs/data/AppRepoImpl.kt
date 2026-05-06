@@ -14,9 +14,6 @@ class AppRepoImpl @Inject constructor(
             val res = apiService.getPosts()
             Log.d("okhttp", "getPosts: $res")
             res
-            /*Response.success(
-                listOf()
-            )*/
         }
     }
 }
