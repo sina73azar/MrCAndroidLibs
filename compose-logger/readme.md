@@ -1,87 +1,270 @@
+````md
+# Compose Logger
 
-Add a new instance of LoggerInterceptor to your okhttp client
-use one of ext functions depend on where your in a activity or fragment or compose screen to show logger fab 
+A lightweight Chucker-like network inspector for Android with:
 
-for adding logger fab to compose you can use DebugFloatingButton (composable) to MaterialTheme
-replace content to {
-content()
-// 👇 Add debug FAB overlay only in debug mode
-DebugFloatingButton()
-}
+- Jetpack Compose support
+- Internal logger UI
+- Public OkHttp interception API
+- XML + Compose floating debug button
+- Zero required DI setup
+- Kotlin-first architecture
 
+---
 
-a lightweight Chucker-like SDK
-with Compose support
-internal logger UI
-public interception API
-optional UI entrypoints
+# Features
 
+- ✅ OkHttp network interception
+- ✅ Request / response inspection
+- ✅ Headers & body viewer
+- ✅ Compose support
+- ✅ XML/View-system support
+- ✅ Internal logger screen
+- ✅ Floating debug FAB
+- ✅ cURL generation utilities
+- ✅ Lightweight architecture
+- ✅ No mandatory Hilt/DI integration
+- ✅ Easy plug-and-play setup
 
+---
+
+# Architecture
+
+```text
 OkHttp Interceptor
-↓
+        ↓
 LoggerStore (singleton state holder)
-↓
+        ↓
 LoggerViewModel
-↓
+        ↓
 LoggerScreen
-↓
+        ↓
 LoggerActivity
+````
 
+---
 
+# Installation
 
-You can later add:
+## 1. Add dependency
 
-export logs
-share logs
-websocket inspector
-room persistence
-network timeline
-curl generation
-request replay
+```kotlin
+dependencies {
+    implementation("your.group:compose-logger:x.x.x")
+}
+```
 
+---
 
-_networkLogs.update { it + entry }
+# Setup
 
-This becomes expensive.
+## Add interceptor to OkHttp
 
-Later optimize with:
+```kotlin
+val okHttpClient = OkHttpClient.Builder()
+    .addInterceptor(ComposeLogger.interceptor)
+    .build()
+```
 
-persistent collections
-ring buffer
-max log count
+Or manually:
 
+```kotlin
+val okHttpClient = OkHttpClient.Builder()
+    .addInterceptor(LoggerInterceptor())
+    .build()
+```
 
-PUBLIC API
-────────────────────────
+---
+
+# Compose Integration
+
+Add `LoggerFab()` somewhere near your root UI.
+
+Example:
+
+```kotlin
+MaterialTheme {
+    content()
+
+    LoggerFab()
+}
+```
+
+Or inside your custom app theme:
+
+```kotlin
+@Composable
+fun AppTheme(
+    content: @Composable () -> Unit
+) {
+    MaterialTheme {
+
+        content()
+
+        LoggerFab()
+    }
+}
+```
+
+---
+
+# XML / View-System Integration
+
+Inside your activity:
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        installLoggerOverlay()
+    }
+}
+```
+
+---
+
+# Public API
+
+```text
 ComposeLogger
 LoggerInterceptor
 LoggerFab
+installLoggerOverlay()
 LoggerActivity
+```
 
-INTERNAL
-────────────────────────
+---
+
+# Internal Components
+
+```text
 LoggerGraph
 LoggerStore
 LoggerViewModel
 LoggerScreen
+```
 
+---
 
-No ViewModel.
-No Hilt.
-No DI.
+# Philosophy
 
-This is VERY viable for logger SDKs.
+This SDK intentionally avoids forcing architectural decisions on host applications.
 
+No required:
 
-Compose app:
-OkHttpClient.Builder()
-.addInterceptor(ComposeLogger.interceptor)
+* Hilt
+* Koin
+* ViewModel injection
+* DI graph setup
+
+The library manages its own internal singleton graph.
+
+---
+
+# Example
+
+## Compose App
+
+```kotlin
+val client = OkHttpClient.Builder()
+    .addInterceptor(ComposeLogger.interceptor)
+    .build()
 
 LoggerFab()
+```
 
+---
 
-XML app:
-OkHttpClient.Builder()
-.addInterceptor(ComposeLogger.interceptor)
+## XML App
+
+```kotlin
+val client = OkHttpClient.Builder()
+    .addInterceptor(ComposeLogger.interceptor)
+    .build()
 
 installLoggerOverlay()
+```
+
+---
+
+# Logger UI
+
+The logger screen includes:
+
+* Request list
+* Response details
+* Status codes
+* Duration
+* Headers
+* Body viewer
+* Search/filter support
+
+---
+
+# Future Roadmap
+
+Planned features:
+
+* [ ] Export logs
+* [ ] Share logs
+* [ ] Room persistence
+* [ ] Request replay
+* [ ] WebSocket inspector
+* [ ] Network timeline visualization
+* [ ] HAR export
+* [ ] Advanced filtering
+* [ ] Log retention policies
+
+---
+
+# Performance Notes
+
+Current implementation uses:
+
+```kotlin
+_networkLogs.update { it + entry }
+```
+
+This is acceptable for moderate usage.
+
+Future optimizations may include:
+
+* Ring buffer
+* Persistent collections
+* Max log limits
+* Batched state updates
+
+---
+
+# Why This Library?
+
+Most Android network inspectors:
+
+* are tightly coupled to DI
+* do not support Compose well
+* require complex setup
+* are difficult to customize
+
+Compose Logger aims to provide:
+
+* minimal setup
+* modern Kotlin APIs
+* clean Compose integration
+* lightweight runtime overhead
+
+---
+
+# License
+
+MIT License
+
+---
+
+# Contributing
+
+PRs, suggestions, and improvements are welcome.
+
+```
+```
