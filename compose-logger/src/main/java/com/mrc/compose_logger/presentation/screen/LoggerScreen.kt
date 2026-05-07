@@ -1,4 +1,4 @@
-package com.mrc.compose_logger.presentation.compose_ui
+package com.mrc.compose_logger.presentation.screen
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
@@ -39,8 +39,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.mrc.compose_logger.data.StatusFilter
-import com.mrc.compose_logger.presentation.LoggerViewModel
+import com.mrc.compose_logger.core.filters.StatusFilter
+import com.mrc.compose_logger.presentation.activity.LoggerViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)

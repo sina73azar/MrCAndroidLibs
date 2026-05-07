@@ -1,10 +1,10 @@
-package com.mrc.compose_logger.presentation
+package com.mrc.compose_logger.presentation.activity
 
 import androidx.lifecycle.ViewModel
-import com.mrc.compose_logger.data.LogFilterState
-import com.mrc.compose_logger.data.NetworkLogEntry
-import com.mrc.compose_logger.data.StatusFilter
-import com.mrc.compose_logger.di.LoggerGraph
+import com.mrc.compose_logger.core.LoggerGraph
+import com.mrc.compose_logger.core.filters.LogFilterState
+import com.mrc.compose_logger.core.filters.StatusFilter
+import com.mrc.compose_logger.core.models.NetworkLogEntry
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
@@ -14,7 +14,7 @@ class LoggerViewModel @Inject constructor(
 
 ) : ViewModel() {
 
-    private val loggerStore = LoggerGraph.loggerStore
+    private val loggerStore = LoggerGraph.store()
 
     // ✅ use filtered logs
     val logs: StateFlow<List<NetworkLogEntry>> = loggerStore.filteredLogs

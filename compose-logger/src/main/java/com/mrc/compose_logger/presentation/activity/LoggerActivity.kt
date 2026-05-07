@@ -1,4 +1,4 @@
-package com.mrc.compose_logger.presentation
+package com.mrc.compose_logger.presentation.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
-import com.mrc.compose_logger.presentation.compose_ui.LoggerScreen
+import com.mrc.compose_logger.presentation.screen.LoggerScreen
 import com.mrc.compose_logger.ui.theme.MrCAndroidLibsTheme
 import dagger.hilt.android.AndroidEntryPoint
 

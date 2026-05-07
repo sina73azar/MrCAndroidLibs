@@ -1,6 +1,5 @@
-package com.mrc.compose_logger.utils
+package com.mrc.compose_logger.core.formatter
 
-import android.net.Uri
 import androidx.core.net.toUri
 
 fun String.toShortUrl(): String {

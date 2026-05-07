@@ -71,3 +71,17 @@ No Hilt.
 No DI.
 
 This is VERY viable for logger SDKs.
+
+
+Compose app:
+OkHttpClient.Builder()
+.addInterceptor(ComposeLogger.interceptor)
+
+LoggerFab()
+
+
+XML app:
+OkHttpClient.Builder()
+.addInterceptor(ComposeLogger.interceptor)
+
+installLoggerOverlay()

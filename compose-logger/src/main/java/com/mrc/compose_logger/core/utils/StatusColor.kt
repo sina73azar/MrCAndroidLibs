@@ -1,4 +1,4 @@
-package com.mrc.compose_logger.utils
+package com.mrc.compose_logger.core.utils
 
 import androidx.compose.ui.graphics.Color
 

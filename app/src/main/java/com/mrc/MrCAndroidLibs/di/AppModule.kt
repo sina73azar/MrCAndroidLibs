@@ -4,7 +4,7 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.mrc.MrCAndroidLibs.data.ApiService
 import com.mrc.MrCAndroidLibs.data.AppRepo
 import com.mrc.MrCAndroidLibs.data.AppRepoImpl
-import com.mrc.compose_logger.pub_api.ComposeLogger
+import com.mrc.compose_logger.api.ComposeLogger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +12,6 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
 /**
@@ -27,7 +26,7 @@ object AppModule {
     fun buildOkhttp(): OkHttpClient {
         return OkHttpClient
             .Builder()
-            .addNetworkInterceptor(ComposeLogger.interceptor())
+            .addNetworkInterceptor(ComposeLogger.interceptor)
             .build()
     }
 

@@ -1,4 +1,4 @@
-package com.mrc.compose_logger.data
+package com.mrc.compose_logger.core.models
 
 data class NetworkLogEntry(
     val id: String,

@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".presentation.LoggerActivity"
+            android:name=".presentation.activity.LoggerActivity"
             android:exported="false"
             android:label="@string/title_activity_logger"
             android:theme="@style/Theme.MrCAndroidLibs" />

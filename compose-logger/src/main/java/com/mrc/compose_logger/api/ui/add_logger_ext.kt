@@ -1,4 +1,4 @@
-package com.mrc.compose_logger.utils
+package com.mrc.compose_logger.api.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,10 +11,13 @@ import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mrc.compose_logger.R
-import com.mrc.compose_logger.presentation.LoggerActivity
+import com.mrc.compose_logger.presentation.activity.LoggerActivity
 
 @SuppressLint("ResourceAsColor", "ClickableViewAccessibility")
-fun AppCompatActivity.addDebugLogger() {
+fun AppCompatActivity.installLoggerOverlay(
+    draggable: Boolean = true,
+    visible: Boolean = /*BuildConfig.DEBUG*/true
+) {
 //    if (BuildConfig.DEBUG) {
 
         val button = FloatingActionButton(this).apply {
@@ -79,7 +82,7 @@ fun AppCompatActivity.addDebugLogger() {
 
         // This stays intact and works again!
         button.setOnClickListener {
-            startActivity(Intent(this@addDebugLogger, LoggerActivity::class.java))
+            startActivity(Intent(this@installLoggerOverlay, LoggerActivity::class.java))
         }
 //    }
 }

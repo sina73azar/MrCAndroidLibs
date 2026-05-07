@@ -1,4 +1,4 @@
-package com.mrc.compose_logger.presentation.compose_ui
+package com.mrc.compose_logger.presentation.screen
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth

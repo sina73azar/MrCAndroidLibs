@@ -1,5 +1,9 @@
-package com.mrc.compose_logger.data
+package com.mrc.compose_logger.core
 
+import com.mrc.compose_logger.core.filters.LogFilterState
+import com.mrc.compose_logger.core.models.NetworkLogEntry
+import com.mrc.compose_logger.core.models.ResponseLogModel
+import com.mrc.compose_logger.core.filters.StatusFilter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -9,7 +13,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
-import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton

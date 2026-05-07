@@ -1,4 +1,4 @@
-package com.mrc.compose_logger.data
+package com.mrc.compose_logger.core.filters
 
 enum class StatusFilter(val displayName:String) {
     ALL("ALL"),

@@ -1,4 +1,4 @@
-package com.mrc.compose_logger.presentation.compose_ui
+package com.mrc.compose_logger.presentation.screen
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -42,13 +42,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.mrc.compose_logger.data.HeaderModel
-import com.mrc.compose_logger.data.NetworkLogEntry
-import com.mrc.compose_logger.utils.JsonUtils
-import com.mrc.compose_logger.utils.NetworkLogTextFormatter
-import com.mrc.compose_logger.utils.StatusColor
-import com.mrc.compose_logger.utils.toCurl
-import com.mrc.compose_logger.utils.toShortUrl
+import com.mrc.compose_logger.core.models.HeaderModel
+import com.mrc.compose_logger.core.models.NetworkLogEntry
+import com.mrc.compose_logger.core.formatter.JsonUtils
+import com.mrc.compose_logger.core.formatter.NetworkLogTextFormatter
+import com.mrc.compose_logger.core.utils.StatusColor
+import com.mrc.compose_logger.core.formatter.toCurl
+import com.mrc.compose_logger.core.formatter.toShortUrl
 
 @Composable
 fun NetworkLogItem(

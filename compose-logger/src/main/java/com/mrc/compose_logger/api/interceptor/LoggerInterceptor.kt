@@ -1,6 +1,11 @@
-package com.mrc.compose_logger.data
+package com.mrc.compose_logger.api.interceptor
 
 import android.util.Log
+import com.mrc.compose_logger.core.LoggerStore
+import com.mrc.compose_logger.core.models.HeaderModel
+import com.mrc.compose_logger.core.models.NetworkLogEntry
+import com.mrc.compose_logger.core.models.RequestLogModel
+import com.mrc.compose_logger.core.models.ResponseLogModel
 import okhttp3.Headers
 import okhttp3.Interceptor
 import okhttp3.Response

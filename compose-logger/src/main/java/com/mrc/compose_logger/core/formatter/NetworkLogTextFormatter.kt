@@ -1,7 +1,7 @@
-package com.mrc.compose_logger.utils
+package com.mrc.compose_logger.core.formatter
 
 
-import com.mrc.compose_logger.data.NetworkLogEntry
+import com.mrc.compose_logger.core.models.NetworkLogEntry
 
 object NetworkLogTextFormatter {
 
