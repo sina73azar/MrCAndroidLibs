@@ -4,7 +4,7 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.mrc.MrCAndroidLibs.data.ApiService
 import com.mrc.MrCAndroidLibs.data.AppRepo
 import com.mrc.MrCAndroidLibs.data.AppRepoImpl
-import com.mrc.compose_logger.data.LoggerInterceptor
+import com.mrc.compose_logger.pub_api.ComposeLogger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,16 +22,12 @@ import retrofit2.Retrofit
 @InstallIn(value = [ActivityRetainedComponent::class])
 object AppModule {
 
+
     @Provides
     fun buildOkhttp(): OkHttpClient {
         return OkHttpClient
             .Builder()
-            .addNetworkInterceptor(
-                HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT).apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                }
-            )
-            .addNetworkInterceptor(LoggerInterceptor())
+            .addNetworkInterceptor(ComposeLogger.interceptor())
             .build()
     }
 

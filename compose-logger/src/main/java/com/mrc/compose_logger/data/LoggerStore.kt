@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 import javax.inject.Singleton
 
-//@Singleton
-object LoggerStore /*@Inject constructor()*/ {
+@Singleton
+class LoggerStore {
 
     private val _networkLogs =
         MutableStateFlow<List<NetworkLogEntry>>(emptyList())

@@ -19,7 +19,7 @@ kotlinxSerialization = "1.6.3"
 ksp = "2.0.21-1.0.25"
 appcompat = "1.7.1"
 material = "1.13.0"
-
+hiltExt = "1.1.0"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 
@@ -51,6 +51,8 @@ hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltA
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltExt" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
