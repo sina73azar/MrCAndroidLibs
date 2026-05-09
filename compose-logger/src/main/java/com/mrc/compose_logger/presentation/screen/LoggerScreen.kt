@@ -38,15 +38,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.mrc.compose_logger.core.filters.StatusFilter
-import com.mrc.compose_logger.presentation.activity.LoggerViewModel
 import kotlinx.coroutines.launch
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoggerScreen(
-    viewModel: LoggerViewModel = hiltViewModel()
+    viewModel: LoggerViewModel = viewModel()
 ) {
     val logs by viewModel.logs.collectAsState()
     val filter by viewModel.filterState.collectAsState()

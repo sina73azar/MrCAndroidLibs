@@ -9,9 +9,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import com.mrc.compose_logger.presentation.screen.LoggerScreen
 import com.mrc.compose_logger.ui.theme.MrCAndroidLibsTheme
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class LoggerActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
