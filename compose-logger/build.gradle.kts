@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.serialization)
     id("maven-publish")
@@ -72,10 +71,13 @@ dependencies {
     /**
      * Hilt
      * */
+    /*
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.navigation.compose)
+*/
 
+    implementation(libs.lifecycle.viewmodel.compose)
     /**
      * Network
      * */
