@@ -102,5 +102,7 @@ dependencies {
      * */
     implementation(libs.kotlinx.coroutines.android)
 
-    implementation(project(":compose-logger"))
+    implementation(project(":network-logger-ui"))
 }
+
+

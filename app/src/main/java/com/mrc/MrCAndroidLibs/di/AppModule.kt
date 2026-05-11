@@ -4,7 +4,7 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.mrc.MrCAndroidLibs.data.ApiService
 import com.mrc.MrCAndroidLibs.data.AppRepo
 import com.mrc.MrCAndroidLibs.data.AppRepoImpl
-import com.mrc.compose_logger.api.ComposeLogger
+import com.mrc.networklogger.core.api.NetworkLogger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +26,7 @@ object AppModule {
     fun buildOkhttp(): OkHttpClient {
         return OkHttpClient
             .Builder()
-            .addNetworkInterceptor(ComposeLogger.interceptor)
+            .addNetworkInterceptor(NetworkLogger.interceptor)
             .build()
     }
 

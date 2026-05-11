@@ -1,3 +1,12 @@
+import org.gradle.kotlin.dsl.invoke
+
+dependencies{
+    configurations.all {
+        resolutionStrategy {
+            force(platform(libs.androidx.compose.bom))
+        }
+    }
+}
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     alias(libs.plugins.android.application) apply false
