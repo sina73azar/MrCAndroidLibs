@@ -1,7 +1,6 @@
 [versions]
 agp = "8.13.2"
 hiltAndroid = "2.57.1"
-#koinAndroid = "4.2"
 kotlin = "2.0.21"
 coreKtx = "1.18.0"
 junit = "4.13.2"
@@ -10,9 +9,7 @@ espressoCore = "3.7.0"
 kotlinxCoroutinesAndroid = "1.8.1"
 lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.13.0"
-composeBom = "2025.01.00"
-composeCompiler = "1.6.10"
-kotlinComposeCompiler = "1.6.10"
+composeBom = "2024.09.03"
 
 retrofit = "2.11.0"
 okhttp = "4.12.0"
@@ -39,7 +36,6 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
-#koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
 
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
@@ -54,9 +50,9 @@ hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltA
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-
-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltExt" }
 lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
@@ -65,4 +61,3 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-
