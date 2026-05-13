@@ -4,8 +4,6 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -187,7 +185,6 @@ fun LoggerScreen(
 }
 
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun CompactMethodRow(
     selected: String?,
@@ -195,10 +192,13 @@ fun CompactMethodRow(
 ) {
     val methods = listOf("ALL", "GET", "POST", "PUT", "DELETE")
 
-    FlowRow(
+    LazyRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        methods.forEach { method ->
+        items(
+            items = methods,
+            key = { it }
+        ) { method ->
             MethodChip(
                 method = method,
                 selected = selected == method,
@@ -278,5 +278,4 @@ fun CompactStatusRow(
         }
     }
 }
-
 
