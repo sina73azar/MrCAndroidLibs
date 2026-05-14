@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("maven-publish")
 }
 
 android {
@@ -35,6 +36,28 @@ android {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
         }
     }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            artifactId = "network-logger-core"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+
+            pom {
+                name.set("Network Logger Core")
+                description.set("OkHttp interceptor and log stream storage for Network Logger.")
+            }
+        }
+    }
 }
 
 dependencies {
@@ -46,5 +69,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(libs.okhttp)
+    api(libs.okhttp)
 }
