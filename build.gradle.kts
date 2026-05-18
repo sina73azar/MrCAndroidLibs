@@ -15,10 +15,21 @@ plugins {
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.vanniktech.maven.publish) apply false
 }
 
 subprojects {
-    group = "com.mrc.networklogger"
-    version = "0.1.1"
+    val isJitPackBuild = System.getenv("JITPACK") == "true"
+    val jitPackGroup = System.getenv("GROUP")
+    val jitPackArtifact = System.getenv("ARTIFACT")
+
+    group = if (isJitPackBuild && !jitPackGroup.isNullOrBlank() && !jitPackArtifact.isNullOrBlank()) {
+        "$jitPackGroup.$jitPackArtifact"
+    } else {
+        "com.mrc.networklogger"
+    }
+    version = if (isJitPackBuild) {
+        System.getenv("VERSION") ?: "0.1.1"
+    } else {
+        "0.1.1"
+    }
 }

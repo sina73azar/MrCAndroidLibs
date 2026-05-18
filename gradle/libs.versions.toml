@@ -20,7 +20,6 @@ ksp = "1.9.22-1.0.17"
 appcompat = "1.6.1"
 material = "1.12.0"
 hiltExt = "1.1.0"
-vanniktechMavenPublish = "0.36.0"
 
 
 [libraries]
@@ -62,4 +61,3 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-vanniktech-maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "vanniktechMavenPublish" }

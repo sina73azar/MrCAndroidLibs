@@ -1,14 +1,5 @@
 pluginManagement {
     repositories {
-        maven("https://maven.myket.ir")
-        maven {
-            url = uri("http://swd.daneshrefah.ir/artifactory/Android-virtual_maven-repo/")
-            isAllowInsecureProtocol = true
-            credentials {
-                username = "android-developer"
-                password = "Dsa@1234"
-            }
-        }
         google {
             content {
                 includeGroupByRegex("com\\.android.*")
@@ -18,6 +9,7 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven("https://maven.myket.ir")
 
         // میرورها
         maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
@@ -26,14 +18,27 @@ pluginManagement {
         maven { url = uri("https://en-mirror.ir") }
         maven { url = uri("https://google403.ir") }
 
+        val internalRepoUrl = providers.gradleProperty("internalRepoUrl").orNull
+        val internalRepoUser = providers.gradleProperty("internalRepoUser").orNull
+        val internalRepoPassword = providers.gradleProperty("internalRepoPassword").orNull
+        if (!internalRepoUrl.isNullOrBlank() && !internalRepoUser.isNullOrBlank() && !internalRepoPassword.isNullOrBlank()) {
+            maven {
+                url = uri(internalRepoUrl)
+                isAllowInsecureProtocol = internalRepoUrl.startsWith("http://")
+                credentials {
+                    username = internalRepoUser
+                    password = internalRepoPassword
+                }
+            }
+        }
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        maven("https://maven.myket.ir")
         google()
         mavenCentral()
+        maven("https://maven.myket.ir")
 
         // میرورها
         maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
@@ -48,12 +53,17 @@ dependencyResolutionManagement {
         // اختیاری: مخزن Snapshot (برای لایبرری‌هایی که نسخه Snapshot دارند)
         maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
 
-        maven {
-            url = uri("http://swd.daneshrefah.ir/artifactory/Android-virtual_maven-repo/")
-            isAllowInsecureProtocol = true
-            credentials {
-                username = "android-developer"
-                password = "Dsa@1234"
+        val internalRepoUrl = providers.gradleProperty("internalRepoUrl").orNull
+        val internalRepoUser = providers.gradleProperty("internalRepoUser").orNull
+        val internalRepoPassword = providers.gradleProperty("internalRepoPassword").orNull
+        if (!internalRepoUrl.isNullOrBlank() && !internalRepoUser.isNullOrBlank() && !internalRepoPassword.isNullOrBlank()) {
+            maven {
+                url = uri(internalRepoUrl)
+                isAllowInsecureProtocol = internalRepoUrl.startsWith("http://")
+                credentials {
+                    username = internalRepoUser
+                    password = internalRepoPassword
+                }
             }
         }
 
