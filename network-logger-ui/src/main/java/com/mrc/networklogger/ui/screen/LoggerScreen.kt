@@ -37,7 +37,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import com.mrc.networklogger.core.filter.StatusFilter
 import com.mrc.networklogger.ui.component.LoggerSearchSection
 import com.mrc.networklogger.ui.component.LoggerTopBar
@@ -48,7 +49,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoggerScreen(
-    viewModel: LoggerViewModel = viewModel()
+    viewModel: LoggerViewModel = rememberLoggerViewModel()
 ) {
     val logs by viewModel.logs.collectAsState()
     val filter by viewModel.filterState.collectAsState()
@@ -184,6 +185,16 @@ fun LoggerScreen(
         }*/
 }
 
+@Composable
+private fun rememberLoggerViewModel(): LoggerViewModel {
+    val owner = LocalViewModelStoreOwner.current
+        ?: error("No ViewModelStoreOwner was provided via LocalViewModelStoreOwner")
+
+    return remember(owner) {
+        ViewModelProvider(owner)[LoggerViewModel::class.java]
+    }
+}
+
 
 @Composable
 fun CompactMethodRow(
@@ -278,4 +289,3 @@ fun CompactStatusRow(
         }
     }
 }
-

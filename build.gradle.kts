@@ -11,14 +11,14 @@ import org.gradle.kotlin.dsl.invoke
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
-    alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.vanniktech.maven.publish) apply false
 }
 
 subprojects {
     group = "com.mrc.networklogger"
-    version = "0.1.0"
+    version = "0.1.1"
 }
