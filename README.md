@@ -20,7 +20,16 @@ Use the modern artifacts for new apps. Use the legacy artifacts only when your a
 
 ## Installation
 
-Add JitPack to your dependency repositories:
+Current versions:
+
+- Modern: `v0.2.0`
+- Legacy: `v0.1.1-legacy`
+
+[![](https://www.jitpack.io/v/sina73azar/MrCAndroidLibs.svg)](https://www.jitpack.io/#sina73azar/MrCAndroidLibs)
+
+### Kotlin DSL
+
+Add JitPack to `settings.gradle.kts`:
 
 ```kotlin
 dependencyResolutionManagement {
@@ -33,23 +42,68 @@ dependencyResolutionManagement {
 }
 ```
 
-Then add the library dependency.
-
-[![](https://www.jitpack.io/v/sina73azar/MrCAndroidLibs.svg)](https://www.jitpack.io/#sina73azar/MrCAndroidLibs)
-
-Modern:
+Modern dependency:
 
 ```kotlin
 dependencies {
-    debugImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-ui:<version>")
+    debugImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-ui:v0.2.0")
 }
 ```
 
-Legacy:
+Legacy dependency:
 
 ```kotlin
 dependencies {
-    debugImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-ui-legacy:<legacy-version>")
+    debugImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-ui-legacy:v0.1.1-legacy")
+}
+```
+
+Core-only dependencies:
+
+```kotlin
+dependencies {
+    debugImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-core:v0.2.0")
+    debugImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-core-legacy:v0.1.1-legacy")
+}
+```
+
+### Groovy
+
+Add JitPack to `settings.gradle`:
+
+```groovy
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+Modern dependency:
+
+```groovy
+dependencies {
+    debugImplementation 'com.github.sina73azar.MrCAndroidLibs:network-logger-ui:v0.2.0'
+}
+```
+
+Legacy dependency:
+
+```groovy
+dependencies {
+    debugImplementation 'com.github.sina73azar.MrCAndroidLibs:network-logger-ui-legacy:v0.1.1-legacy'
+}
+```
+
+Core-only dependencies:
+
+```groovy
+dependencies {
+    debugImplementation 'com.github.sina73azar.MrCAndroidLibs:network-logger-core:v0.2.0'
+    debugImplementation 'com.github.sina73azar.MrCAndroidLibs:network-logger-core-legacy:v0.1.1-legacy'
 }
 ```
 
@@ -112,8 +166,8 @@ Use this library only in debug or internal builds:
 
 ```kotlin
 dependencies {
-    debugImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-ui:<version>")
-    releaseImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-core:<version>")
+    debugImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-ui:v0.2.0")
+    releaseImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-core:v0.2.0")
 }
 ```
 
