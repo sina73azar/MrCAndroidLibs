@@ -41,7 +41,7 @@ android {
 publishing {
     publications {
         register<MavenPublication>("release") {
-            artifactId = "network-logger-core-legacy"
+            artifactId = "network-logger-core"
 
             afterEvaluate {
                 from(components["release"])

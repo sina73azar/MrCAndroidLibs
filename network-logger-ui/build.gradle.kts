@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.compose.compiler)
     id("maven-publish")
 }
 
@@ -40,15 +41,12 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
-    }
 }
 
 publishing {
     publications {
         register<MavenPublication>("release") {
-            artifactId = "network-logger-ui-legacy"
+            artifactId = "network-logger-ui"
 
             afterEvaluate {
                 from(components["release"])
