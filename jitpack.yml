@@ -1,0 +1,6 @@
+jdk:
+  - openjdk17
+before_install:
+  - chmod +x gradlew
+install:
+  - ./gradlew -Dorg.gradle.offline=false clean publishToMavenLocal -x test
