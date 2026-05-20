@@ -108,5 +108,5 @@ dependencies {
      * */
     implementation(libs.kotlinx.coroutines.android)
 
-    implementation(project(":network-logger-ui"))
+    implementation("com.mrc.networklogger:network-logger-ui:0.2.0")
 }
