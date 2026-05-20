@@ -35,6 +35,8 @@ dependencyResolutionManagement {
 
 Then add the library dependency.
 
+[![](https://www.jitpack.io/v/sina73azar/MrCAndroidLibs.svg)](https://www.jitpack.io/#sina73azar/MrCAndroidLibs)
+
 Modern:
 
 ```kotlin
