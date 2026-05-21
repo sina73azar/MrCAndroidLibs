@@ -7,6 +7,7 @@ This module currently provides:
 - VLESS URI parsing.
 - sing-box compatible JSON config generation.
 - A singleton proxy lifecycle API.
-- A pluggable `ProxyEngine` boundary for sing-box, Xray, or a future Rust backend.
+- A libbox-backed sing-box engine.
+- A pluggable `ProxyEngine` boundary for alternative engines.
 
-It does not yet bundle a native proxy engine. Calls to `NetworkProxy.start(...)` require a real `ProxyEngine` implementation.
+The default engine uses `net.clever-vpn:libbox-android`.

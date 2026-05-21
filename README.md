@@ -9,7 +9,7 @@ The project publishes two modules:
 
 The repository also contains an experimental module:
 
-- `network-proxy-core`: Android API foundation for proxying selected OkHttp and Retrofit clients through a local VLESS-backed proxy engine. This module is not production-ready yet because the native proxy engine still needs to be wired.
+- `network-proxy-core`: Android API foundation for proxying selected OkHttp and Retrofit clients through a local VLESS-backed sing-box/libbox proxy engine.
 
 ## Release Lines
 
@@ -202,7 +202,7 @@ Current implementation status:
 - Builds sing-box compatible JSON with a local SOCKS/HTTP/mixed inbound.
 - Provides a singleton `NetworkProxy` lifecycle API.
 - Provides a pluggable `ProxyEngine` interface.
-- Does not yet bundle or start sing-box/Xray/Rust native code.
+- Starts a sing-box engine through `net.clever-vpn:libbox-android`.
 
 For the native backend, the preferred first implementation is sing-box with Android ABIs for regular devices:
 
@@ -210,7 +210,7 @@ For the native backend, the preferred first implementation is sing-box with Andr
 - `armeabi-v7a`
 - `x86_64`
 
-Until a real `ProxyEngine` is provided, `NetworkProxy.start(...)` throws `EngineUnavailableException` by design.
+The default engine runs a local proxy only. It does not request Android `VpnService` permission and does not proxy whole-device traffic.
 
 ## Publishing From This Repo
 

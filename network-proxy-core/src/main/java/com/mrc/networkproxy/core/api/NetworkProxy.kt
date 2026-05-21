@@ -8,7 +8,7 @@ import com.mrc.networkproxy.core.config.SingBoxConfigBuilder
 import com.mrc.networkproxy.core.config.VlessProxyConfig
 import com.mrc.networkproxy.core.config.VlessUriParser
 import com.mrc.networkproxy.core.config.toJavaProxyType
-import com.mrc.networkproxy.core.engine.EngineUnavailableException
+import com.mrc.networkproxy.core.engine.LibboxProxyEngine
 import com.mrc.networkproxy.core.engine.ProxyEngine
 import com.mrc.networkproxy.core.engine.RunningProxyEngine
 import kotlinx.coroutines.sync.Mutex
@@ -28,7 +28,7 @@ object NetworkProxy {
         context: Context,
         vlessUri: String,
         options: NetworkProxyOptions = NetworkProxyOptions(),
-        engine: ProxyEngine = MissingProxyEngine
+        engine: ProxyEngine = LibboxProxyEngine()
     ): ProxySession {
         return start(
             context = context,
@@ -42,7 +42,7 @@ object NetworkProxy {
         context: Context,
         config: VlessProxyConfig,
         options: NetworkProxyOptions = NetworkProxyOptions(),
-        engine: ProxyEngine = MissingProxyEngine
+        engine: ProxyEngine = LibboxProxyEngine()
     ): ProxySession = mutex.withLock {
         activeSession?.let { return@withLock it }
 
@@ -77,13 +77,6 @@ object NetworkProxy {
         }
     }
 
-    private object MissingProxyEngine : ProxyEngine {
-        override suspend fun start(request: ProxyStartRequest): RunningProxyEngine {
-            throw EngineUnavailableException(
-                "No proxy engine was provided. Wire a sing-box/Xray/Rust ProxyEngine before starting the tunnel."
-            )
-        }
-    }
 }
 
 class ProxySession internal constructor(

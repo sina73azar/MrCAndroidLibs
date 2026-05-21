@@ -14,3 +14,8 @@ interface RunningProxyEngine {
 }
 
 class EngineUnavailableException(message: String) : IllegalStateException(message)
+
+class ProxyEngineStartException(
+    message: String,
+    cause: Throwable
+) : IllegalStateException(message, cause)

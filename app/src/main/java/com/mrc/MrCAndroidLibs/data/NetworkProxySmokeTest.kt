@@ -3,7 +3,6 @@ package com.mrc.MrCAndroidLibs.data
 import android.content.Context
 import android.util.Log
 import com.mrc.networkproxy.core.api.NetworkProxy
-import com.mrc.networkproxy.core.engine.EngineUnavailableException
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,11 +28,9 @@ class NetworkProxySmokeTest @Inject constructor(
             }
 
             result.exceptionOrNull()?.let { throwable ->
-                if (throwable is EngineUnavailableException) {
-                    Log.d(TAG, "Expected proxy engine missing exception received.", throwable)
-                } else {
-                    Log.e(TAG, "Unexpected proxy smoke test failure.", throwable)
-                }
+                Log.e(TAG, "Proxy engine smoke test failed.", throwable)
+            } ?: NetworkProxy.currentSession?.let { session ->
+                Log.d(TAG, "Proxy engine started at ${session.host}:${session.port}.")
             }
         }
     }
