@@ -75,3 +75,4 @@ rootProject.name = "MrCAndroidLibs"
 include(":app")
 include(":network-logger-core")
 include(":network-logger-ui")
+include(":network-proxy-core")

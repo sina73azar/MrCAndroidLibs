@@ -7,6 +7,10 @@ The project publishes two modules:
 - `network-logger-core`: OkHttp interceptor, in-memory log store, models, and text formatting.
 - `network-logger-ui`: Activity, Compose screens, and optional floating overlay button for viewing logs.
 
+The repository also contains an experimental module:
+
+- `network-proxy-core`: Android API foundation for proxying selected OkHttp and Retrofit clients through a local VLESS-backed proxy engine. This module is not production-ready yet because the native proxy engine still needs to be wired.
+
 ## Release Lines
 
 This repository keeps two release lines:
@@ -174,6 +178,39 @@ dependencies {
 If you do not want any logger classes in release builds, keep all usage behind your own debug-only source set or build flag.
 
 Avoid logging sensitive production traffic. Body logging can include credentials, tokens, personal data, and request payloads.
+
+## Experimental Network Proxy Core
+
+`network-proxy-core` is intended for Android apps that need to proxy selected network calls, not the whole device. The planned flow is:
+
+```kotlin
+val session = NetworkProxy.start(
+    context = context,
+    vlessUri = "vless://..."
+)
+
+val proxiedClient = OkHttpClient.Builder()
+    .proxy(session.proxy)
+    .build()
+```
+
+Then use `proxiedClient` only for the Retrofit or OkHttp calls that should go through the tunnel.
+
+Current implementation status:
+
+- Parses `vless://...` links.
+- Builds sing-box compatible JSON with a local SOCKS/HTTP/mixed inbound.
+- Provides a singleton `NetworkProxy` lifecycle API.
+- Provides a pluggable `ProxyEngine` interface.
+- Does not yet bundle or start sing-box/Xray/Rust native code.
+
+For the native backend, the preferred first implementation is sing-box with Android ABIs for regular devices:
+
+- `arm64-v8a`
+- `armeabi-v7a`
+- `x86_64`
+
+Until a real `ProxyEngine` is provided, `NetworkProxy.start(...)` throws `EngineUnavailableException` by design.
 
 ## Publishing From This Repo
 
