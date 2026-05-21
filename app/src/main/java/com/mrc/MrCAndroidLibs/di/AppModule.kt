@@ -4,6 +4,7 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.mrc.MrCAndroidLibs.data.ApiService
 import com.mrc.MrCAndroidLibs.data.AppRepo
 import com.mrc.MrCAndroidLibs.data.AppRepoImpl
+import com.mrc.MrCAndroidLibs.data.NetworkProxySmokeTest
 import com.mrc.networklogger.core.api.NetworkLogger
 import dagger.Module
 import dagger.Provides
@@ -23,7 +24,9 @@ object AppModule {
 
 
     @Provides
-    fun buildOkhttp(): OkHttpClient {
+    fun buildOkhttp(networkProxySmokeTest: NetworkProxySmokeTest): OkHttpClient {
+        networkProxySmokeTest.startExpectedMissingEngineTest()
+
         return OkHttpClient
             .Builder()
             .addNetworkInterceptor(NetworkLogger.interceptor)
@@ -48,4 +51,3 @@ object AppModule {
     @Provides
     fun buildRepo(appRepoImpl: AppRepoImpl): AppRepo = appRepoImpl
 }
-
