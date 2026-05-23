@@ -34,6 +34,7 @@ class LibboxProxyEngine : ProxyEngine {
             val commandServer = CommandServer(handler, platform)
 
             try {
+                Log.d(TAG, "Starting libbox with config: ${request.singBoxConfigJson}")
                 commandServer.start()
                 commandServer.startOrReloadService(request.singBoxConfigJson, OverrideOptions())
             } catch (throwable: Throwable) {
@@ -50,6 +51,10 @@ class LibboxProxyEngine : ProxyEngine {
                 commandServer = commandServer
             )
         }
+
+    private companion object {
+        private const val TAG = "LibboxProxyEngine"
+    }
 }
 
 private object LibboxRuntime {
