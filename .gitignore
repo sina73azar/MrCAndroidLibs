@@ -25,3 +25,4 @@ local.properties
 /.idea/vcs.xml
 /.kotlin/
 /.idea/markdown.xml
+/network-proxy-core/build/
