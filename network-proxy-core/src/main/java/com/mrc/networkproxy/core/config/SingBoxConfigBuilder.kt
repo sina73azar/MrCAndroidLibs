@@ -44,7 +44,6 @@ object SingBoxConfigBuilder {
             .put("listen", endpoint.host)
             .put("listen_port", endpoint.port)
             .put("sniff", options.enableSniffing)
-            .put("set_system_proxy", false)
     }
 
     private fun buildVlessOutbound(vless: VlessProxyConfig): JSONObject {
