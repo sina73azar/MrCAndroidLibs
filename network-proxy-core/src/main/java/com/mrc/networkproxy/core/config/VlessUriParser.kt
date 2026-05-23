@@ -61,6 +61,20 @@ object VlessUriParser {
 
     private fun parseTransport(query: Map<String, String>): VlessTransport {
         return when (query["type"]?.lowercase()) {
+            "xhttp", "splithttp" -> VlessTransport.Http(
+                path = query["path"]?.takeIf { it.isNotBlank() },
+                host = query["host"]?.takeIf { it.isNotBlank() }
+            )
+
+            "tcp" -> when (query["headerType"]?.lowercase()) {
+                "http" -> VlessTransport.Http(
+                    path = query["path"]?.takeIf { it.isNotBlank() },
+                    host = query["host"]?.takeIf { it.isNotBlank() }
+                )
+
+                else -> VlessTransport.Tcp
+            }
+
             "ws", "websocket" -> VlessTransport.WebSocket(
                 path = query["path"]?.takeIf { it.isNotBlank() },
                 host = query["host"]?.takeIf { it.isNotBlank() }

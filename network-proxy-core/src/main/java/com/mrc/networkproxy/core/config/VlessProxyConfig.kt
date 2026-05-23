@@ -38,6 +38,11 @@ sealed interface VlessTransport {
         val host: String? = null
     ) : VlessTransport
 
+    data class Http(
+        val path: String? = null,
+        val host: String? = null
+    ) : VlessTransport
+
     data class Grpc(
         val serviceName: String? = null
     ) : VlessTransport

@@ -55,9 +55,6 @@ object SingBoxConfigBuilder {
             .put("uuid", vless.uuid)
             .put("packet_encoding", "xudp")
 
-        if (vless.encryption.isNotBlank()) {
-            outbound.put("encryption", vless.encryption)
-        }
         vless.flow?.let { outbound.put("flow", it) }
 
         buildTls(vless.security)?.let { outbound.put("tls", it) }
@@ -101,6 +98,14 @@ object SingBoxConfigBuilder {
                     transport.host?.let { host ->
                         JSONObject().put("Host", host)
                     }
+                )
+
+            is VlessTransport.Http -> JSONObject()
+                .put("type", "http")
+                .putIfNotNull("path", transport.path)
+                .putIfNotNull(
+                    "host",
+                    transport.host?.let { host -> JSONArray().put(host) }
                 )
 
             is VlessTransport.Grpc -> JSONObject()
