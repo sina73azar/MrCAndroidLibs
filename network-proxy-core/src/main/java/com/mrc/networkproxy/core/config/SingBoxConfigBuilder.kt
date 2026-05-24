@@ -23,7 +23,7 @@ object SingBoxConfigBuilder {
                 "route",
                 JSONObject()
                     .put("final", "proxy")
-                    .put("auto_detect_interface", true)
+                    .put("auto_detect_interface", options.autoDetectInterface)
             )
             .toString(2)
     }

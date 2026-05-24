@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -6,6 +8,19 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
 }
+
+val localProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) {
+        file.inputStream().use(::load)
+    }
+}
+
+fun String.toBuildConfigString(): String =
+    "\"" + replace("\\", "\\\\").replace("\"", "\\\"") + "\""
+
+val vlessSubscriptionUrl =
+    (localProperties.getProperty("proxy.subscriptionUrl") ?: System.getenv("VLESS_SUBSCRIPTION_URL")).orEmpty()
 
 android {
     namespace = "com.mrc.MrCAndroidLibs"
@@ -19,6 +34,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "VLESS_SUBSCRIPTION_URL", vlessSubscriptionUrl.toBuildConfigString())
+        buildConfigField("int", "VLESS_ACCEPTABLE_LATENCY_MS", "1500")
     }
 
     buildTypes {
@@ -44,6 +61,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 

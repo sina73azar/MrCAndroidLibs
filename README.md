@@ -181,36 +181,21 @@ Avoid logging sensitive production traffic. Body logging can include credentials
 
 ## Experimental Network Proxy Core
 
-`network-proxy-core` is intended for Android apps that need to proxy selected network calls, not the whole device. The planned flow is:
+`network-proxy-core` is intended for Android apps that need to proxy selected OkHttp or Retrofit calls through a local VLESS-backed sing-box/libbox proxy engine.
 
-```kotlin
-val session = NetworkProxy.start(
-    context = context,
-    vlessUri = "vless://..."
-)
-
-val proxiedClient = OkHttpClient.Builder()
-    .proxy(session.proxy)
-    .build()
-```
-
-Then use `proxiedClient` only for the Retrofit or OkHttp calls that should go through the tunnel.
-
-Current implementation status:
+It provides:
 
 - Parses `vless://...` links.
-- Builds sing-box compatible JSON with a local SOCKS/HTTP/mixed inbound.
+- Builds sing-box compatible JSON.
 - Provides a singleton `NetworkProxy` lifecycle API.
+- Starts a local SOCKS/HTTP/mixed proxy endpoint.
+- Can select and probe working VLESS candidates from a subscription URL.
 - Provides a pluggable `ProxyEngine` interface.
 - Starts a sing-box engine through `net.clever-vpn:libbox-android`.
 
-For the native backend, the preferred first implementation is sing-box with Android ABIs for regular devices:
-
-- `arm64-v8a`
-- `armeabi-v7a`
-- `x86_64`
-
 The default engine runs a local proxy only. It does not request Android `VpnService` permission and does not proxy whole-device traffic.
+
+Detailed structure, usage examples, subscription setup, and current protocol limitations are documented in [`network-proxy-core/readme.md`](network-proxy-core/readme.md).
 
 ## Publishing From This Repo
 

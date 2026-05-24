@@ -5,6 +5,7 @@ data class NetworkProxyOptions(
     val localPort: Int = 2080,
     val localProxyType: LocalProxyType = LocalProxyType.SOCKS,
     val enableSniffing: Boolean = false,
+    val autoDetectInterface: Boolean = false,
     val logLevel: String = "warn"
 )
 

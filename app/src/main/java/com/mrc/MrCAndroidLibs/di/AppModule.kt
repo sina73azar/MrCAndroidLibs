@@ -5,7 +5,6 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.mrc.MrCAndroidLibs.data.ApiService
 import com.mrc.MrCAndroidLibs.data.AppRepo
 import com.mrc.MrCAndroidLibs.data.AppRepoImpl
-import com.mrc.MrCAndroidLibs.data.NetworkProxySmokeTest
 import com.mrc.networklogger.core.api.NetworkLogger
 import com.mrc.networkproxy.core.api.NetworkProxy
 import dagger.Module

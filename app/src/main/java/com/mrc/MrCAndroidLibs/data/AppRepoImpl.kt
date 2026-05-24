@@ -8,11 +8,11 @@ import javax.inject.Inject
  */
 class AppRepoImpl @Inject constructor(
     private val apiService: ApiService,
-    private val networkProxySmokeTest: NetworkProxySmokeTest
+    private val networkProxyStarter: AppNetworkProxyStarter
 ) : AppRepo {
     override suspend fun getPosts(): ResolvedResult<PostsResponse> {
         return networkResolver {
-            val proxySession = networkProxySmokeTest.ensureStarted()
+            val proxySession = networkProxyStarter.ensureStarted()
             Log.d(
                 "okhttp",
                 "getPosts: proxy session ready at ${proxySession.host}:${proxySession.port}"
