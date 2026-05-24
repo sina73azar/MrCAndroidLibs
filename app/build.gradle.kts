@@ -127,5 +127,5 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
 
     implementation("com.github.sina73azar.MrCAndroidLibs:network-logger-ui:v0.2.0")
-    implementation(project(":network-proxy-core"))
+    implementation("com.github.sina73azar.MrCAndroidLibs:network-proxy-core:v0.3.0-proxy-alpha01")
 }

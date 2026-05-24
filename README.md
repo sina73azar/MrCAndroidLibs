@@ -28,6 +28,7 @@ Current versions:
 
 - Modern: `v0.2.0`
 - Legacy: `v0.1.1-legacy`
+- Proxy experimental: `v0.3.0-proxy-alpha01`
 
 [![](https://www.jitpack.io/v/sina73azar/MrCAndroidLibs.svg)](https://www.jitpack.io/#sina73azar/MrCAndroidLibs)
 
@@ -71,6 +72,14 @@ dependencies {
 }
 ```
 
+Experimental proxy dependency:
+
+```kotlin
+dependencies {
+    implementation("com.github.sina73azar.MrCAndroidLibs:network-proxy-core:v0.3.0-proxy-alpha01")
+}
+```
+
 ### Groovy
 
 Add JitPack to `settings.gradle`:
@@ -108,6 +117,14 @@ Core-only dependencies:
 dependencies {
     debugImplementation 'com.github.sina73azar.MrCAndroidLibs:network-logger-core:v0.2.0'
     debugImplementation 'com.github.sina73azar.MrCAndroidLibs:network-logger-core-legacy:v0.1.1-legacy'
+}
+```
+
+Experimental proxy dependency:
+
+```groovy
+dependencies {
+    implementation 'com.github.sina73azar.MrCAndroidLibs:network-proxy-core:v0.3.0-proxy-alpha01'
 }
 ```
 
