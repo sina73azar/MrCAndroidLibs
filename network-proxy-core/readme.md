@@ -127,6 +127,73 @@ class AppNetworkProxyStarter(
 }
 ```
 
+## OkHttp Setup
+
+`network-proxy-core` does not depend on OkHttp. If your app uses OkHttp or Retrofit, configure the client in the app layer.
+
+For a client created after the proxy is already started, a fixed proxy is enough:
+
+```kotlin
+val session = NetworkProxy.startFromSubscription(
+    context = context,
+    subscriptionUrl = BuildConfig.VLESS_SUBSCRIPTION_URL
+)
+
+val okHttpClient = OkHttpClient.Builder()
+    .proxy(session.proxy)
+    .build()
+```
+
+If the OkHttp client is created before proxy startup, use a `ProxySelector` that reads the current session at request time:
+
+```kotlin
+private fun activeProxySelector(): ProxySelector {
+    return object : ProxySelector() {
+        override fun select(uri: URI?): List<Proxy> {
+            val proxy = NetworkProxy.currentSession?.proxy ?: Proxy.NO_PROXY
+            Log.d("NetworkProxyTunnel", "ProxySelector.select uri=$uri proxy=$proxy")
+            return listOf(proxy)
+        }
+
+        override fun connectFailed(uri: URI?, sa: SocketAddress?, ioe: IOException?) {
+            Log.e("NetworkProxyTunnel", "ProxySelector.connectFailed uri=$uri socketAddress=$sa", ioe)
+        }
+    }
+}
+```
+
+Optional tunnel diagnostics:
+
+```kotlin
+private fun tunnelLoggingEventListenerFactory(): EventListener.Factory {
+    return EventListener.Factory {
+        object : EventListener() {
+            override fun connectStart(
+                call: Call,
+                inetSocketAddress: InetSocketAddress,
+                proxy: Proxy
+            ) {
+                Log.d(
+                    "NetworkProxyTunnel",
+                    "OkHttp connectStart url=${call.request().url} target=$inetSocketAddress proxy=$proxy"
+                )
+            }
+        }
+    }
+}
+```
+
+Apply both to the app's OkHttp client:
+
+```kotlin
+val okHttpClient = OkHttpClient.Builder()
+    .proxySelector(activeProxySelector())
+    .eventListenerFactory(tunnelLoggingEventListenerFactory())
+    .build()
+```
+
+Make sure requests that must be tunneled call `NetworkProxy.start(...)` or `NetworkProxy.startFromSubscription(...)` before execution. Otherwise the dynamic selector falls back to `Proxy.NO_PROXY`.
+
 ## Supported VLESS Fields
 
 Currently supported:
