@@ -1,5 +1,7 @@
 # MrC Network Logger
 
+[![](https://www.jitpack.io/v/sina73azar/MrCAndroidLibs.svg)](https://www.jitpack.io/#sina73azar/MrCAndroidLibs)
+
 MrC Network Logger is a small Android network inspection library for OkHttp based apps. It records requests and responses through an OkHttp interceptor and provides an optional Android UI for browsing captured logs during development.
 
 The project publishes two modules:
@@ -29,8 +31,6 @@ Current versions:
 - Modern: `v0.2.0`
 - Legacy: `v0.1.1-legacy`
 - Proxy experimental: `v0.3.0-proxy-alpha01`
-
-[![](https://www.jitpack.io/v/sina73azar/MrCAndroidLibs.svg)](https://www.jitpack.io/#sina73azar/MrCAndroidLibs)
 
 ### Kotlin DSL
 
