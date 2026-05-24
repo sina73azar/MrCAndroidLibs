@@ -27,7 +27,8 @@ Use the modern artifacts for new apps. Use the legacy artifacts only when your a
 
 The dependency examples below use the versions listed in the release-line table.
 
-### Kotlin DSL
+<details open>
+<summary>Kotlin DSL</summary>
 
 Add JitPack to `settings.gradle.kts`:
 
@@ -75,7 +76,10 @@ dependencies {
 }
 ```
 
-### Groovy
+</details>
+
+<details>
+<summary>Groovy</summary>
 
 Add JitPack to `settings.gradle`:
 
@@ -122,6 +126,8 @@ dependencies {
     implementation 'com.github.sina73azar.MrCAndroidLibs:network-proxy-core:v0.3.0-proxy-alpha01'
 }
 ```
+
+</details>
 
 The UI module depends on the core module, so most apps only need to add `network-logger-ui`. If you only want the interceptor and stored log stream without the UI, depend on the core artifact instead.
 

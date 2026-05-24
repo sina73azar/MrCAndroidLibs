@@ -84,7 +84,8 @@ This matters because TCP latency only proves that `server:port` is reachable. It
 
 Keep sensitive subscription URLs out of source control. In an app module, read the value from `local.properties` or CI environment and expose it through `BuildConfig`.
 
-### Kotlin DSL
+<details open>
+<summary>Kotlin DSL</summary>
 
 ```kotlin
 // app/build.gradle.kts
@@ -111,7 +112,10 @@ android {
 }
 ```
 
-### Groovy
+</details>
+
+<details>
+<summary>Groovy</summary>
 
 ```groovy
 // app/build.gradle
@@ -140,6 +144,8 @@ android {
     }
 }
 ```
+
+</details>
 
 Then the app only needs a small starter:
 
