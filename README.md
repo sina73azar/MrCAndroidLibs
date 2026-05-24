@@ -1,7 +1,5 @@
 # MrC Network Logger
 
-[![](https://www.jitpack.io/v/sina73azar/MrCAndroidLibs.svg)](https://www.jitpack.io/#sina73azar/MrCAndroidLibs)
-
 MrC Network Logger is a small Android network inspection library for OkHttp based apps. It records requests and responses through an OkHttp interceptor and provides an optional Android UI for browsing captured logs during development.
 
 The project publishes two modules:
@@ -17,20 +15,17 @@ The repository also contains an experimental module:
 
 This repository keeps two release lines:
 
-| Line | Branch | Artifact IDs | Intended Use |
-| --- | --- | --- | --- |
-| Modern | `master` | `network-logger-core`, `network-logger-ui` | Current Android and OkHttp projects |
-| Legacy | `legacy-okhttp3` | `network-logger-core-legacy`, `network-logger-ui-legacy` | Apps that must stay on the old OkHttp 3.x compatible build |
+| Line | Version | Branch | Artifact IDs | Intended Use |
+| --- | --- | --- | --- | --- |
+| Modern logger | [![v0.2.0](https://img.shields.io/badge/JitPack-v0.2.0-blue)](https://jitpack.io/#sina73azar/MrCAndroidLibs/v0.2.0) | `master` | `network-logger-core`, `network-logger-ui` | Current Android and OkHttp projects |
+| Legacy logger | [![v0.1.1-legacy](https://img.shields.io/badge/JitPack-v0.1.1--legacy-blue)](https://jitpack.io/#sina73azar/MrCAndroidLibs/v0.1.1-legacy) | `legacy-okhttp3` | `network-logger-core-legacy`, `network-logger-ui-legacy` | Apps that must stay on the old OkHttp 3.x compatible build |
+| Proxy experimental | [![v0.3.0-proxy-alpha01](https://img.shields.io/badge/JitPack-v0.3.0--proxy--alpha01-orange)](https://jitpack.io/#sina73azar/MrCAndroidLibs/v0.3.0-proxy-alpha01) | `master` | `network-proxy-core` | Experimental selected-request VLESS proxying |
 
 Use the modern artifacts for new apps. Use the legacy artifacts only when your app cannot move off the legacy dependency stack yet.
 
 ## Installation
 
-Current versions:
-
-- Modern: `v0.2.0`
-- Legacy: `v0.1.1-legacy`
-- Proxy experimental: `v0.3.0-proxy-alpha01`
+The dependency examples below use the versions listed in the release-line table.
 
 ### Kotlin DSL
 
