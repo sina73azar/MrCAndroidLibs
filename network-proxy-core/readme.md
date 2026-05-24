@@ -84,6 +84,8 @@ This matters because TCP latency only proves that `server:port` is reachable. It
 
 Keep sensitive subscription URLs out of source control. In an app module, read the value from `local.properties` or CI environment and expose it through `BuildConfig`.
 
+### Kotlin DSL
+
 ```kotlin
 // app/build.gradle.kts
 import java.util.Properties
@@ -105,6 +107,36 @@ android {
 
     buildFeatures {
         buildConfig = true
+    }
+}
+```
+
+### Groovy
+
+```groovy
+// app/build.gradle
+import java.util.Properties
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withInputStream { stream ->
+        localProperties.load(stream)
+    }
+}
+
+def subscriptionUrl =
+        localProperties.getProperty("proxy.subscriptionUrl")
+                ?: System.getenv("VLESS_SUBSCRIPTION_URL")
+                ?: ""
+
+android {
+    defaultConfig {
+        buildConfigField "String", "VLESS_SUBSCRIPTION_URL", "\"${subscriptionUrl}\""
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 }
 ```
