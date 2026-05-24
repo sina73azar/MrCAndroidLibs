@@ -171,11 +171,18 @@ Use this library only in debug or internal builds:
 ```kotlin
 dependencies {
     debugImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-ui:v0.2.0")
-    releaseImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-core:v0.2.0")
 }
 ```
 
-If you do not want any logger classes in release builds, keep all usage behind your own debug-only source set or build flag.
+If you only need the interceptor and stored log stream without the UI, use the core artifact in debug builds:
+
+```kotlin
+dependencies {
+    debugImplementation("com.github.sina73azar.MrCAndroidLibs:network-logger-core:v0.2.0")
+}
+```
+
+Keep logger usage behind your own debug-only source set or build flag if your release source set must compile without logger classes.
 
 Avoid logging sensitive production traffic. Body logging can include credentials, tokens, personal data, and request payloads.
 
@@ -196,42 +203,3 @@ It provides:
 The default engine runs a local proxy only. It does not request Android `VpnService` permission and does not proxy whole-device traffic.
 
 Detailed structure, usage examples, subscription setup, and current protocol limitations are documented in [`network-proxy-core/readme.md`](network-proxy-core/readme.md).
-
-## Publishing From This Repo
-
-JitPack builds the project with:
-
-```bash
-./gradlew -Dorg.gradle.offline=false clean publishToMavenLocal -x test
-```
-
-Modern releases should be tagged from `master`:
-
-```bash
-git tag v0.2.0
-git push origin v0.2.0
-```
-
-Legacy releases should be tagged from `legacy-okhttp3`:
-
-```bash
-git checkout legacy-okhttp3
-git tag v0.1.1-legacy
-git push origin legacy-okhttp3 v0.1.1-legacy
-```
-
-## Development
-
-Build all modules:
-
-```bash
-./gradlew clean build
-```
-
-Publish locally for verification:
-
-```bash
-./gradlew publishToMavenLocal
-```
-
-The sample `app` module consumes the local project modules and can be used to verify the logger UI and interceptor behavior before tagging a release.

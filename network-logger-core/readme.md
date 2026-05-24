@@ -2,4 +2,4 @@
 
 Core logging engine for MrC Network Logger.
 
-See the root `README.md` for installation, usage, release-line, and publishing instructions.
+See the root `README.md` for installation, usage, and release-line guidance.
