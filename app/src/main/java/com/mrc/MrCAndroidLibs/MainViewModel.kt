@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mrc.MrCAndroidLibs.data.AppRepo
 import com.mrc.MrCAndroidLibs.data.ResolvedResult
+import com.mrc.MrCAndroidLibs.fcm.FcmTokenRegistrar
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,6 +21,9 @@ class MainViewModel @Inject constructor(
     private val appRepo: AppRepo
 ) : ViewModel() {
 
+    @Inject
+    lateinit var fcmTokenRegistrar: FcmTokenRegistrar
+
     private val _uiState = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> = _uiState
 
@@ -31,6 +35,12 @@ class MainViewModel @Inject constructor(
             appRepo.getPosts().let {
                 _uiState.update { uiState -> uiState.copy(fetchPostsOperation = it) }
             }
+        }
+    }
+    init {
+        viewModelScope.launch {
+            delay(5000)
+            fcmTokenRegistrar.registerCurrentToken()
         }
     }
 }

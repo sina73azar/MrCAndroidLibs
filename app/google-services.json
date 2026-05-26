@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "159782820819",
+    "project_id": "mrcandroidlibs",
+    "storage_bucket": "mrcandroidlibs.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159782820819:android:0f568bde7e6c82396bad26",
+        "android_client_info": {
+          "package_name": "com.mrc.MrCAndroidLibs"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6_g46ubSYbLEmzDnH6SnvfbDvBYVi77s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

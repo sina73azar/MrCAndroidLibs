@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose.compiler)
+    id("com.google.gms.google-services")
 }
 
 val localProperties = Properties().apply {
@@ -21,6 +22,8 @@ fun String.toBuildConfigString(): String =
 
 val vlessSubscriptionUrl =
     (localProperties.getProperty("proxy.subscriptionUrl") ?: System.getenv("VLESS_SUBSCRIPTION_URL")).orEmpty()
+val fcmRegistrationUrl =
+    (localProperties.getProperty("fcm.registrationUrl") ?: System.getenv("FCM_REGISTRATION_URL")).orEmpty()
 
 android {
     namespace = "com.mrc.MrCAndroidLibs"
@@ -36,6 +39,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "VLESS_SUBSCRIPTION_URL", vlessSubscriptionUrl.toBuildConfigString())
         buildConfigField("int", "VLESS_ACCEPTABLE_LATENCY_MS", "1500")
+        buildConfigField("String", "FCM_REGISTRATION_URL", fcmRegistrationUrl.toBuildConfigString())
     }
 
     buildTypes {
@@ -68,6 +72,7 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
+    implementation("androidx.webkit:webkit:1.14.0")
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.androidx.activity.compose)
@@ -128,4 +133,11 @@ dependencies {
 
     implementation("com.github.sina73azar.MrCAndroidLibs:network-logger-ui:v0.2.0")
     implementation("com.github.sina73azar.MrCAndroidLibs:network-proxy-core:v0.3.0-proxy-alpha01")
+
+    /**
+     * Firebase
+     * */
+    implementation(platform("com.google.firebase:firebase-bom:34.13.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-messaging")
 }

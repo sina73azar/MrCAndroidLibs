@@ -10,7 +10,7 @@ import com.mrc.networkproxy.core.api.NetworkProxy
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityRetainedComponent
+import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.Call
 import okhttp3.EventListener
@@ -23,16 +23,18 @@ import java.net.Proxy
 import java.net.ProxySelector
 import java.net.SocketAddress
 import java.net.URI
+import javax.inject.Singleton
 
 /**
  * Mr.C 04/May/2026
  */
 @Module
-@InstallIn(value = [ActivityRetainedComponent::class])
+@InstallIn(value = [SingletonComponent::class])
 object AppModule {
 
 
     @Provides
+    @Singleton
     fun buildOkhttp(): OkHttpClient {
         return OkHttpClient
             .Builder()
@@ -44,6 +46,7 @@ object AppModule {
 
 
     @Provides
+    @Singleton
     fun buildApiService(okHttpClient: OkHttpClient): ApiService {
         val json = Json { ignoreUnknownKeys = true }
 
@@ -58,6 +61,7 @@ object AppModule {
     }
 
     @Provides
+    @Singleton
     fun buildRepo(appRepoImpl: AppRepoImpl): AppRepo = appRepoImpl
 
     private fun activeProxySelector(): ProxySelector {
