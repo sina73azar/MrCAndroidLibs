@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>مستند توسعه اپلیکیشن ساعت آنالوگ با B4A</title>
+	<meta name="generator" content="LibreOffice 7.3.7.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2026-07-02T11:01:42.653431761"/>
+	<meta name="" content=""/>
+	<style type="text/css">
+		@page { size: 8.5in 11in; margin-left: 0.79in; margin-right: 0.39in; margin-top: 0.39in; margin-bottom: 0.39in }
+		p { color: #111111; font-family: "Tahoma", "Arial", sans-serif; font-size: 10pt; line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		h1 { color: #222222; line-height: 180%; margin-bottom: 0.08in; background: transparent; page-break-after: avoid }
+		h1.western { font-family: "Liberation Serif", serif; font-size: 24pt; font-weight: bold }
+		h1.cjk { font-family: "Noto Serif CJK SC"; font-size: 24pt; font-weight: bold }
+		h1.ctl { font-family: "Lohit Devanagari"; font-size: 24pt; font-weight: bold }
+		h2 { color: #222222; line-height: 180%; margin-top: 0.14in; margin-bottom: 0.08in; background: transparent; page-break-after: avoid }
+		h2.western { font-family: "Liberation Serif", serif; font-size: 18pt; font-weight: bold }
+		h2.cjk { font-family: "Noto Serif CJK SC"; font-size: 18pt; font-weight: bold }
+		h2.ctl { font-family: "Lohit Devanagari"; font-size: 18pt; font-weight: bold }
+		td p { color: #111111; font-family: "Tahoma", "Arial", sans-serif; font-size: 10pt; line-height: 180%; text-align: right; orphans: 0; widows: 0; background: transparent }
+		th p { color: #111111; font-family: "Tahoma", "Arial", sans-serif; font-size: 10pt; font-weight: bold; line-height: 180%; text-align: right; orphans: 0; widows: 0; background: #eeeeee; background: transparent }
+		code { font-family: "Consolas", monospace }
+	</style>
+</head>
+<body lang="en-US" text="#111111" link="#000080" vlink="#800000" dir="rtl"><h1 class="western">
+<font face="Lohit Devanagari"><span lang="hi-IN">مستند توسعه
+اپلیکیشن ساعت آنالوگ با </span></font>B4A</h1>
+<h2 class="western">1. <font face="Lohit Devanagari"><span lang="hi-IN">معرفی
+پروژه</span></font></h2>
+<p><span lang="hi-IN">در این پروژه یک اپلیکیشن
+ساده اندرویدی با نام </span><b>Analoge Clock</b>
+<span lang="hi-IN">ساخته شد</span>. <span lang="hi-IN">هدف
+برنامه نمایش ساعت آنالوگ بر اساس زمان
+دستگاه کاربر است</span>. <span lang="hi-IN">برنامه
+مستقل است و برای اجرا به اینترنت، سرور
+یا دیتابیس نیاز ندارد</span>. 
+</p>
+<h2 class="western">2. <font face="Lohit Devanagari"><span lang="hi-IN">ابزارهای
+استفاده شده</span></font></h2>
+<table cellpadding="2" cellspacing="2">
+	<tr>
+		<th style="border: none; padding: 0in"><p><span lang="hi-IN">مورد</span></p>
+		</th>
+		<th style="border: none; padding: 0in"><p><span lang="hi-IN">توضیح</span></p>
+		</th>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0in"><p><span lang="hi-IN">محیط
+			توسعه</span></p>
+		</td>
+		<td style="border: none; padding: 0in"><p>B4A - Basic4Android</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0in"><p><span lang="hi-IN">زبان
+			برنامه نویسی</span></p>
+		</td>
+		<td style="border: none; padding: 0in"><p>B4X / Basic</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0in"><p><span lang="hi-IN">نوع
+			خروجی</span></p>
+		</td>
+		<td style="border: none; padding: 0in"><p>Android APK</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0in"><p><span lang="hi-IN">حداقل
+			نسخه اندروید</span></p>
+		</td>
+		<td style="border: none; padding: 0in"><p>Android 6.0 <span lang="hi-IN">یا
+			بالاتر</span></p>
+		</td>
+	</tr>
+</table>
+<h2 class="western">3. <font face="Lohit Devanagari"><span lang="hi-IN">مراحل
+ایجاد پروژه</span></font></h2>
+<ol>
+	<li><p style="margin-bottom: 0in"><span lang="hi-IN">ابتدا یک
+	پروژه جدید در </span>B4A <span lang="hi-IN">ایجاد
+	شد</span>. 
+	</p>
+	<li><p style="margin-bottom: 0in"><span lang="hi-IN">نام برنامه
+	روی </span><b>Analoge Clock</b> <span lang="hi-IN">قرار گرفت</span>.
+		</p>
+	<li><p style="margin-bottom: 0in">Package Name <span lang="hi-IN">برنامه
+	به صورت مستقل تعریف شد</span></p>
+	<li><p style="margin-bottom: 0in"><span lang="hi-IN">صفحه اصلی
+	برنامه فقط شامل یک ساعت آنالوگ و نمایش
+	زمان فعلی دستگاه طراحی شد</span>. 
+	</p>
+	<li><p><span lang="hi-IN">برای به روز شدن عقربه ها،
+	زمان دستگاه در فاصله های منظم خوانده
+	شد</span>. 
+	</p>
+</ol>
+<h2 class="western">4. <font face="Lohit Devanagari"><span lang="hi-IN">طراحی
+رابط کاربری</span></font></h2>
+<p><span lang="hi-IN">رابط کاربری برنامه ساده
+طراحی شد تا کاربر بلافاصله بعد از باز
+کردن برنامه، ساعت را مشاهده کند</span>. <span lang="hi-IN">در
+بالای صفحه زمان دیجیتال نمایش داده می
+شود و در قسمت اصلی صفحه، ساعت آنالوگ
+قرار دارد</span>. 
+</p>
+<p><span lang="hi-IN">برای ظاهر برنامه از پس زمینه
+تیره، رنگ های خوانا و عقربه ثانیه با رنگ
+متفاوت استفاده شد تا مشاهده زمان راحت
+تر باشد</span>. 
+</p>
+<h2 class="western">5. <font face="Lohit Devanagari"><span lang="hi-IN">منطق
+نمایش زمان</span></font></h2>
+<p><span lang="hi-IN">برنامه زمان فعلی دستگاه را
+از سیستم عامل دریافت می کند</span>. <span lang="hi-IN">سپس
+ساعت، دقیقه و ثانیه جدا می شوند و بر اساس
+آن ها زاویه عقربه ها محاسبه می شود</span>.
+</p>
+<ul>
+	<li><p style="margin-bottom: 0in"><span lang="hi-IN">عقربه ساعت
+	با توجه به ساعت و مقدار دقیقه حرکت می
+	کند</span>. 
+	</p>
+	<li><p style="margin-bottom: 0in"><span lang="hi-IN">عقربه
+	دقیقه با توجه به دقیقه و مقدار ثانیه
+	حرکت می کند</span>. 
+	</p>
+	<li><p><span lang="hi-IN">عقربه ثانیه هر ثانیه یک
+	بار تغییر می کند</span>. 
+	</p>
+</ul>
+<h2 class="western">6. <font face="Lohit Devanagari"><span lang="hi-IN">رسم
+ساعت آنالوگ</span></font></h2>
+<p><span lang="hi-IN">برای رسم ساعت از بخش گرافیکی
+</span>B4A <span lang="hi-IN">استفاده شد</span>. <span lang="hi-IN">ابتدا
+صفحه ساعت به صورت دایره رسم شد</span>. <span lang="hi-IN">سپس
+خط های کوچک و بزرگ دور ساعت برای دقیقه
+ها و ساعت ها اضافه شدند</span>. <span lang="hi-IN">بعد
+از آن اعداد </span>1 <span lang="hi-IN">تا </span>12 <span lang="hi-IN">روی
+صفحه قرار گرفتند</span>. 
+</p>
+<p><span lang="hi-IN">در مرحله آخر عقربه های ساعت،
+دقیقه و ثانیه روی مرکز ساعت رسم شدند</span>.
+</p>
+<h2 class="western">7. <font face="Lohit Devanagari"><span lang="hi-IN">تنظیمات
+برنامه</span></font></h2>
+<table cellpadding="2" cellspacing="2">
+	<tr>
+		<th style="border: none; padding: 0in"><p><span lang="hi-IN">تنظیم</span></p>
+		</th>
+		<th style="border: none; padding: 0in"><p><span lang="hi-IN">مقدار</span></p>
+		</th>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0in"><p><span lang="hi-IN">نام
+			برنامه</span></p>
+		</td>
+		<td style="border: none; padding: 0in"><p>Analoge Clock</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0in"><p>Package Name</p>
+		</td>
+		<td style="border: none; padding: 0in"><p><code>com.</code><code>mani</code><code>.analogeclock</code></p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0in"><p>Version Code</p>
+		</td>
+		<td style="border: none; padding: 0in"><p>1</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0in"><p>Version Name</p>
+		</td>
+		<td style="border: none; padding: 0in"><p>1.0</p>
+		</td>
+	</tr>
+</table>
+<h2 class="western">8. <font face="Lohit Devanagari"><span lang="hi-IN">تست
+برنامه</span></font></h2>
+<p><span lang="hi-IN">بعد از پیاده سازی، برنامه
+روی حالت </span>Debug <span lang="hi-IN">اجرا شد</span>.
+<span lang="hi-IN">موارد زیر بررسی شدند</span>: 
+</p>
+<ul>
+	<li><p style="margin-bottom: 0in"><span lang="hi-IN">باز شدن
+	صحیح برنامه </span>
+	</p>
+	<li><p style="margin-bottom: 0in"><span lang="hi-IN">نمایش ساعت
+	آنالوگ </span>
+	</p>
+	<li><p style="margin-bottom: 0in"><span lang="hi-IN">هماهنگ
+	بودن عقربه ها با زمان دستگاه </span>
+	</p>
+	<li><p style="margin-bottom: 0in"><span lang="hi-IN">به روز شدن
+	ثانیه ها بدون نیاز به بستن و باز کردن
+	برنامه </span>
+	</p>
+	<li><p><span lang="hi-IN">خوانا بودن ظاهر برنامه
+	روی صفحه موبایل </span>
+	</p>
+</ul>
+<h2 class="western">9. <font face="Lohit Devanagari"><span lang="hi-IN">خروجی
+نهایی</span></font></h2>
+<p><span lang="hi-IN">پس از پایان توسعه و تست،
+برنامه برای گرفتن خروجی </span>APK <span lang="hi-IN">آماده
+شد</span>. <span lang="hi-IN">برای نسخه </span>Release <span lang="hi-IN">از
+کلید امضای اختصاصی پروژه استفاده می
+شود</span>. 
+</p>
+<h2 class="western">10. <font face="Lohit Devanagari"><span lang="hi-IN">جمع
+بندی</span></font></h2>
+<p><span lang="hi-IN">این پروژه یک اپلیکیشن ساده
+ساعت آنالوگ است که با </span>B4A <span lang="hi-IN">پیاده
+سازی شده و زمان فعلی دستگاه را نمایش می
+دهد</span>. <span lang="hi-IN">برنامه سبک، مستقل و
+بدون نیاز به ارتباط شبکه است</span>. 
+</p>
+</body>
+</html>
