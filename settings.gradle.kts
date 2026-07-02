@@ -77,6 +77,7 @@ dependencyResolutionManagement {
 rootProject.name = "MrCAndroidLibs"
 include(":app")
 include(":analoge_clock")
+include(":memory_game")
 include(":network-logger-core")
 include(":network-logger-ui")
 include(":network-proxy-core")

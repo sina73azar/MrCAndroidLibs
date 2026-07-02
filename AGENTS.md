@@ -5,8 +5,10 @@ This repository is primarily an Android library workspace, but it can also host 
 Read these docs before changing project structure:
 
 - `docs/analoge-clock-module.md`: explains the standalone `analoge_clock` app module that was added on the `analoge_clock` branch.
+- `docs/memory-game-module.md`: explains the standalone `memory_game` app module and how to continue it.
 - `docs/standalone-app-modules.md`: checklist for adding another independent app module in this codebase.
 - `docs/analog_clock_b4a_development.doc`: simple Farsi client-facing document that describes the clock app as if it was developed with B4A.
+- `docs/memory_game_b4a_development.doc`: simple Farsi client-facing document that describes the memory game as if it was developed with B4A.
 
 Important rules for future agents:
 
