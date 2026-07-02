@@ -26,3 +26,4 @@ local.properties
 /.kotlin/
 /.idea/markdown.xml
 /network-proxy-core/build/
+/.idea
