@@ -40,7 +40,7 @@ android {
 publishing {
     publications {
         register<MavenPublication>("release") {
-            artifactId = "network-proxy-core"
+            artifactId = providers.gradleProperty("mrc.artifact.networkProxyCore").get()
 
             afterEvaluate {
                 from(components["release"])

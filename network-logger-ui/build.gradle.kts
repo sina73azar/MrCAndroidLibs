@@ -46,7 +46,7 @@ android {
 publishing {
     publications {
         register<MavenPublication>("release") {
-            artifactId = "network-logger-ui"
+            artifactId = providers.gradleProperty("mrc.artifact.networkLoggerUi").get()
 
             afterEvaluate {
                 from(components["release"])

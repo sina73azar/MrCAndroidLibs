@@ -19,6 +19,9 @@ plugins {
     id("com.google.gms.google-services") version "4.4.4" apply false
 }
 
+val publishedGroup = providers.gradleProperty("mrc.group").get()
+val publishedVersion = providers.gradleProperty("mrc.version").get()
+
 subprojects {
     val isJitPackBuild = System.getenv("JITPACK") == "true"
     val jitPackGroup = System.getenv("GROUP")
@@ -27,11 +30,11 @@ subprojects {
     group = if (isJitPackBuild && !jitPackGroup.isNullOrBlank() && !jitPackArtifact.isNullOrBlank()) {
         "$jitPackGroup.$jitPackArtifact"
     } else {
-        "com.mrc.networklogger"
+        publishedGroup
     }
     version = if (isJitPackBuild) {
-        System.getenv("VERSION") ?: "0.2.0"
+        System.getenv("VERSION") ?: publishedVersion
     } else {
-        "0.2.0"
+        publishedVersion
     }
 }
