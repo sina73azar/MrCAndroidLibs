@@ -1,0 +1,12 @@
+{
+  "project_name": "MrCAndroidLibs",
+  "module": "app",
+  "modules": [
+    "app",
+    "analoge_clock",
+    "memory_game",
+    "impl-android-server"
+  ],
+  "default_variant": "debug",
+  "variants": "auto"
+}
