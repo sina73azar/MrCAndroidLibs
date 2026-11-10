@@ -36,6 +36,7 @@ import com.mrc.MrCAndroidLibs.data.ResolvedResult
 import com.mrc.MrCAndroidLibs.ui.theme.MrCAndroidLibsTheme
 import com.mrc.MrCAndroidLibs.webview.WebViewActivity
 import dagger.hilt.android.AndroidEntryPoint
+import io.sentry.Sentry
 
 
 @AndroidEntryPoint
@@ -64,6 +65,29 @@ class MainActivity : ComponentActivity() {
                             .padding(16.dp)
                     ) {
                         Text("Open Facebook WebView")
+                    }
+
+                    Button(
+                        onClick = { Sentry.captureMessage("MrCAndroidLibs manual test event") },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
+                    ) {
+                        Text("Send Sentry test event")
+                    }
+
+                    Button(
+                        onClick = {
+                            Thread {
+                                    throw RuntimeException("MrCAndroidLibs manual test crash")
+                                }
+                                .start()
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
+                    ) {
+                        Text("Trigger test crash")
                     }
 
                     PostsScreen(

@@ -140,4 +140,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:34.13.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-messaging")
+
+    implementation(platform("ir.irananalytics:iran-analytics-bom:8.62.0"))
+    implementation("ir.irananalytics:iran-analytics-android-facade")
 }
