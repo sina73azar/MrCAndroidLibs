@@ -31,6 +31,12 @@
         </activity>
 
         <activity
+            android:name=".SecondActivity"
+            android:exported="false"
+            android:label="Second Activity"
+            android:theme="@style/Theme.MrCAndroidLibs" />
+
+        <activity
             android:name=".webview.WebViewActivity"
             android:exported="false"
             android:label="@string/facebook_webview_title" />

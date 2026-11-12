@@ -58,6 +58,17 @@ class MainActivity : ComponentActivity() {
                 Column(modifier = Modifier.fillMaxSize()) {
                     Button(
                         onClick = {
+                            startActivity(Intent(this@MainActivity, SecondActivity::class.java))
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                    ) {
+                        Text("Go to second activity")
+                    }
+
+                    Button(
+                        onClick = {
                             startActivity(Intent(this@MainActivity, WebViewActivity::class.java))
                         },
                         modifier = Modifier
